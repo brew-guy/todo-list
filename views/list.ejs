@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do lists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handjet:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="nav">
+      <a href="/">Today's items</a>
+      <a href="/work">Work items</a>
+    </div>
+
+    <div id="heading"><%= listTitle %>!</div>
+
+    <div class="box">
+      <% list.forEach(item=> { %>
+      <div class="item">
+        <input type="checkbox" />
+        <p><%= item %></p>
+      </div>
+      <% }); %> <% let listType = ''; switch (listTitle) { case 'Work Items':
+      listType = 'work'; break; } %>
+
+      <form class="item" action="/<%= listType %>" method="post">
+        <input
+          type="text"
+          name="newItem"
+          placeholder="New item"
+          autocomplete="off"
+        />
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      </form>
+    </div>
+
+    <footer>August 2023 | Made with 🌱 and 💗 in Copenhagen</footer>
+  </body>
+</html>
